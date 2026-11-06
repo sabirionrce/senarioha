@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سناریوهای تست آتش</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--tx:#f5f5f5;--mu:#9a9a9a;--line:rgba(255,255,255,.2);--gl:rgba(255,255,255,.07)}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:'Vazirmatn',Tahoma,sans-serif}
+body{overflow:hidden;position:relative}
+.orb{position:fixed;border-radius:50%;filter:blur(70px);background:#fff;pointer-events:none}
+.o1{width:260px;height:260px;top:-60px;right:-80px;opacity:.16}
+.o2{width:300px;height:300px;bottom:80px;left:-120px;opacity:.1}
+.top{position:fixed;top:0;inset-inline:0;padding:calc(env(safe-area-inset-top,0px) + 14px) 18px 8px;display:flex;justify-content:space-between;align-items:center;z-index:5;font-size:12px;color:var(--mu)}
+.dots{display:flex;gap:6px}.dots i{width:20px;height:4px;border-radius:4px;background:rgba(255,255,255,.18);transition:.3s}.dots i.on{background:#fff;width:34px}
+.stage{position:fixed;inset:0;display:flex;transition:transform .45s cubic-bezier(.3,.8,.3,1);direction:ltr}
+.slide{min-width:100%;height:100%;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 56px) 18px 130px;direction:rtl;-webkit-overflow-scrolling:touch}
+.tag{display:inline-block;font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--line);color:var(--mu);margin-bottom:10px;background:var(--gl)}
+h1{font-size:26px;font-weight:800;line-height:1.5;margin-bottom:14px}
+.box{background:var(--gl);border:1px solid var(--line);border-radius:20px;padding:15px;margin-bottom:11px;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.lb{font-size:12px;color:var(--mu);display:flex;align-items:center;gap:8px}
+.lb+.t,.lb+.q{margin-top:8px}
+.n{width:21px;height:21px;border-radius:50%;background:#fff;color:#000;font-size:11px;display:inline-grid;place-items:center;font-weight:800}
+.q{font-size:17px;font-weight:600;line-height:1.9}
+.q p+p{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.t{font-size:14px;line-height:1.95;color:#d6d6d6}
+.psy{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35)}
+.en{direction:ltr;text-align:left;font-size:22px;font-weight:800;letter-spacing:.3px;margin:8px 0 6px}
+.nav{position:fixed;inset-inline:0;bottom:0;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;z-index:6;direction:rtl}
+.nav::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(5,5,5,.9));z-index:-1}
+.nav button{flex:1;height:52px;border-radius:26px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font:600 15px 'Vazirmatn',Tahoma,sans-serif;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);box-shadow:0 8px 28px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.35);transition:.2s}
+.nav button:active{transform:scale(.96)}.nav button:disabled{opacity:.3}
+@media(min-width:700px){.slide,.nav{padding-inline:calc(50% - 250px)}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<div class="top"><span>سناریوهای تست آتش</span><div class="dots" id="dots"></div></div>
+<div class="stage" id="stage"></div>
+<div class="nav"><button id="next">صفحه بعد ←</button><button id="prev">→ صفحه قبل</button></div>
+<script>
+var T1=['تست چینی + واکنش مهندس','تست اصلی + واکنش مهندس'];
+var S=[
+{tag:'اسکلت ۱',title:'هزینه‌ی نهایی',
+hook:['«این چینیه ۱ میلیارده، این اصلیه ۱ میلیون. بیا با آزمایش نشونت بدم چرا؟»'],
+hv:'دو ترمینال با نخ یا چسب آویزان‌اند و نورپردازی قرمز است. فندک زیر هر دو گرفته می‌شود (می‌تواند همزمان با کلمه‌ی «آزمایش» روشن شود).',
+steps:[[T1[0],'ذوب‌شدن و شعله‌ور شدن چینی.'],[T1[1],'اصلی زیر شعله سالم می‌ماند.']],
+en:'Loss Reframing',pd:'قیمت خرید را به «هزینه‌ی واقعی» تبدیل می‌کند: ارزان‌بودن یعنی یک خسارت بزرگ در راه است. مخاطب مجبور می‌شود بپرسد «چرا؟» و می‌ماند.'},
+{tag:'اسکلت ۲',title:'رقابت قیمت',
+hook:['«این ۳۰۰ هزار تومنه و این ۱ میلیون، کدوم زودتر ذوب می‌شه؟»'],
+hv:'دو ترمینال آویزان یا روی استند (آویزان تمیزتر و سینمایی‌تر است). از اول ویدیو فندک زیر هر دو است.',
+steps:[['تست همزمان + واکنش مهندس','صفحه به‌صورت اسپلیت دو نیمه می‌شود، ترمینال چینی یک طرف و اصلی طرف دیگر. هر دو همزمان در معرض حرارت قرار می‌گیرند و یک تایمر بزرگ از همان لحظه‌ی اول روی صفحه شروع به شمارش می‌کند. چینی شعله‌ور می‌شود، تایمر روی همان ثانیه فریز می‌شود و مهندس واکنش نشان می‌دهد. اصلی تا آخر سالم می‌ماند و مخاطب اختلاف را کنار هم می‌بیند.']],
+en:'Prediction Game',pd:'مخاطب در ذهنش یکی را انتخاب می‌کند و برای فهمیدن درستی حدسش تا آخر می‌ماند.'},
+{tag:'اسکلت ۳',title:'تهدید مستقیم',
+hook:['«یکی از این دو تا، تابلوی شمارو آتیش می‌زنه.»'],
+hv:'از ثانیه‌ی اول ویدیو فندک زیر هر دو ترمینال است. ترمینال‌ها معلق‌اند یا روی استند.',
+steps:[[T1[0],'ذوب‌شدن و شعله‌ور شدن چینی.'],[T1[1],'اصلی زیر شعله سالم می‌ماند.']],
+en:'Personal Stakes',pd:'عبارت «تابلوی شما» خطر را شخصی می‌کند. مخاطب خودش را وسط صحنه می‌بیند و نمی‌تواند بی‌تفاوت رد شود.'},
+{tag:'اسکلت ۴',title:'چینی یا اصلی',
+hook:['«بریم ببینیم کدوم زودتر آتیش می‌گیره، چینی یا اصلی.»'],
+hv:'از اول ویدیو فندک زیر هر دو ترمینال است. ترمینال‌ها آویزان‌اند یا روی استند.',
+steps:[[T1[0],'ذوب‌شدن و شعله‌ور شدن چینی.'],[T1[1],'اصلی زیر شعله سالم می‌ماند.']],
+en:'Direct Showdown',pd:'همه‌چیز از ثانیه‌ی اول روشن است: دو حریف، یک آتش. ساده‌ترین قلاب، بدون ابهام و بدون توضیح اضافه.'},
+{tag:'اسکلت ۵ | نسخه‌ی خودت',title:'آتش اول، سؤال بعد',
+hook:['شروع ویدیو: پیش‌نمایش گنگ و کوتاه از خود ویدیو. «با اولین اتصالی، کل تابلو برق رو به آتیش می‌کشه.»','بعد برمی‌گردیم به اول ویدیو و مقایسه شروع می‌شود: «یکی از این دو تا، تابلوی شمارو آتیش می‌زنه.»'],
+hv:'پیش‌نمایش: کلوزآپ یک ترمینال بی‌برند که آتش گرفته و آب می‌شود. بعد از برش: دو ترمینال آویزان یا روی استند، فندک زیر هر دو.',
+steps:[['تست چینی + واکنش مهندس','همان صحنه‌ی پیش‌نمایش، این بار کامل و با همان فریم‌ها.'],[T1[1],'اصلی سالم می‌ماند.']],
+en:'Open Loop',pd:'پیش‌نمایش گنگ یک تصویر ناقص در ذهن می‌گذارد. مغز تا کامل‌شدنش آرام نمی‌گیرد و ویدیو را تا همان صحنه تماشا می‌کند.'}
+];
+var st=document.getElementById('stage'),dots=document.getElementById('dots');
+function box(n,l,t,c){return '<div class="box '+(c||'')+'"><div class="lb">'+(n?'<span class="n">'+n+'</span>':'')+l+'</div>'+(t?'<div class="t">'+t+'</div>':'')+'</div>'}
+S.forEach(function(s){
+var h='<section class="slide"><span class="tag">'+s.tag+'</span><h1>'+s.title+'</h1>';
+h+='<div class="box"><div class="lb"><span class="n">۱</span>قلاب</div><div class="q">'+s.hook.map(function(x){return '<p>'+x+'</p>'}).join('')+'</div></div>';
+h+=box('','قلاب تصویری',s.hv);
+s.steps.forEach(function(p,i){h+=box(String(i+2).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d]}),'مرحله‌ی '+['اول','دوم'][i]+': '+p[0],p[1])});
+h+=box('','مرحله‌ی آخر: کال تو اکشن','');
+h+='<div class="box psy"><div class="lb">سبک روانشناسی</div><div class="en">'+s.en+'</div><div class="t">'+s.pd+'</div></div>';
+st.insertAdjacentHTML('beforeend',h+'</section>');dots.insertAdjacentHTML('beforeend','<i></i>')});
+var cur=0;
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));st.style.transform='translateX('+(-cur*100)+'%)';
+[].forEach.call(dots.children,function(d,k){d.className=k==cur?'on':''});
+document.getElementById('prev').disabled=cur==0;document.getElementById('next').disabled=cur==S.length-1;st.children[cur].scrollTop=0}
+document.getElementById('next').onclick=function(){go(cur+1)};
+document.getElementById('prev').onclick=function(){go(cur-1)};
+var x0=null;st.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+st.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>70)go(cur+(d<0?1:-1));x0=null});
+go(0);
+</script>
+</body>
+</html>
